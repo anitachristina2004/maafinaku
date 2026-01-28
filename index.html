@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaf ya…</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#141e30,#243b55);
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  color:#fff;
+}
+
+/* ===== OPENING ===== */
+.opening{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  z-index:10;
+  animation:fadeIn 2s;
+}
+
+.opening h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.6em;
+  margin-bottom:25px;
+}
+
+.open-btn{
+  padding:14px 32px;
+  border:none;
+  border-radius:40px;
+  background:#fff;
+  color:#243b55;
+  font-size:1em;
+  cursor:pointer;
+  animation:pulse 1.8s infinite;
+}
+
+/* ===== MAIN ===== */
+.container{
+  display:none;
+  min-height:100vh;
+  padding:25px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.card{
+  max-width:850px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  border-radius:24px;
+  padding:35px 30px;
+  text-align:center;
+  animation:slideUp 2s;
+}
+
+.card h2{
+  font-family:'Playfair Display',serif;
+  font-size:2.3em;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  font-size:0.9em;
+  opacity:0.75;
+  margin-bottom:20px;
+}
+
+.heart{
+  font-size:38px;
+  margin:15px 0;
+  animation:heartbeat 2s infinite;
+}
+
+.message{
+  font-size:1em;
+  line-height:1.9;
+  opacity:0;
+  animation:showText 3s forwards;
+  animation-delay:1.5s;
+}
+
+.signature{
+  margin-top:28px;
+  font-style:italic;
+  opacity:0;
+  animation:showText 3s forwards;
+  animation-delay:4s;
+}
+
+/* ===== PARTICLES ===== */
+.light{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:rgba(255,255,255,0.6);
+  border-radius:50%;
+  animation:float 9s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.25)}
+}
+
+@keyframes showText{
+  to{opacity:1}
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);opacity:0}
+  to{transform:translateY(-10vh);opacity:1}
+}
+
+/* mobile */
+@media(max-width:600px){
+  .opening h1{font-size:2em}
+  .card h2{font-size:2em}
+  .message{font-size:0.95em}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (optional) -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- OPENING -->
+<div class="opening" id="opening">
+  <h1>Ada sesuatu buat kamu…</h1>
+  <button class="open-btn" onclick="openMessage()">Baca Pesanku</button>
+</div>
+
+<!-- FLOATING LIGHTS -->
+<script>
+for(let i=0;i<45;i++){
+  let light=document.createElement("div");
+  light.className="light";
+  light.style.left=Math.random()*100+"vw";
+  light.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(light);
+}
+</script>
+
+<!-- CONTENT -->
+<div class="container" id="content">
+  <div class="card">
+    <h2>Maaf ya…</h2>
+    <div class="subtitle">aku lagi belajar nurunin ego</div>
+
+    <div class="heart">🤍</div>
+
+    <div class="message">
+      Aku mau jujur sama kamu.<br><br>
+
+      Aku sadar, selama ini egoku sering terlalu tinggi.
+      Aku lebih fokus pengen dimengerti,
+      tapi lupa buat bener-bener ngerti kamu.<br><br>
+
+      Ada banyak momen di mana aku harusnya lebih tenang,
+      lebih sabar,
+      tapi malah bikin kamu capek dan ngerasa sendirian.<br><br>
+
+      Maaf ya…
+      kalau sikapku, caraku ngomong,
+      atau keputusanku pernah nyakitin kamu.<br><br>
+
+      Aku lagi belajar,
+      pelan-pelan nurunin ego,
+      dengerin lebih banyak,
+      dan jadi versi diriku yang lebih baik.<br><br>
+
+      Aku nggak janji bakal langsung sempurna,
+      tapi aku janji mau terus berusaha.
+      Karena kamu penting buat aku.
+    </div>
+
+    <div class="signature">
+      — dari aku, yang masih belajar 🤍
+    </div>
+  </div>
+</div>
+
+<script>
+function openMessage(){
+  document.getElementById("opening").style.display="none";
+  document.getElementById("content").style.display="flex";
+  document.getElementById("music").play();
+}
+</script>
+
+</body>
+</html>
